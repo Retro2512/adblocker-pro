@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Adblocker Pro settings</title>
+  <link rel="stylesheet" href="ui.css">
+</head>
+<body class="options">
+  <main class="settings-page">
+    <header class="settings-header"><div class="brand"><img src="../icons/icon48.png" width="32" height="32" alt=""><span>Adblocker Pro</span></div><p id="feedback" class="feedback" role="status" aria-live="polite">Loading</p></header>
+    <h1>Settings</h1>
+    <form id="settings-form">
+      <fieldset id="settings-fields" disabled>
+        <section class="settings-section controls-section" aria-label="Playback settings">
+          <label class="setting-row"><span>Enabled</span><span class="switch"><input id="enabled" name="enabled" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></span></label>
+          <label class="setting-row"><span><span class="setting-name">Hold unidentified music</span><span class="setting-detail">Keep music paused until its language is recognized.</span></span><span class="switch"><input id="strict" name="strict" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></span></label>
+          <label class="setting-row"><span><span class="setting-name">Match artists</span><span class="setting-detail">Use known artists when a track has no language label.</span></span><span class="switch"><input id="artistMatching" name="artistMatching" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></span></label>
+        </section>
+        <section class="settings-section" aria-labelledby="languages-heading">
+          <h2 id="languages-heading">Block these languages</h2>
+          <div id="languages" class="language-grid"></div>
+        </section>
+        <section class="settings-section" aria-labelledby="exceptions-heading">
+          <h2 id="exceptions-heading">Your rules</h2>
+          <div class="field"><label for="phrases">Block matching words</label><textarea id="phrases" name="phrases" rows="4" spellcheck="false" aria-describedby="phrases-hint"></textarea><p id="phrases-hint" class="field-hint">One word or phrase per line. Matches track titles and artists.</p></div>
+          <div class="field"><label for="allowedHosts">Always allow these sites</label><textarea id="allowedHosts" name="allowedHosts" rows="3" spellcheck="false" autocapitalize="none" aria-describedby="hosts-hint"></textarea><p id="hosts-hint" class="field-hint">One domain per line, such as music.youtube.com.</p></div>
+          <div class="track-list-group"><h3>Allowed tracks</h3><ul id="allowTracks" class="rule-list"></ul><p id="allow-empty" class="empty-text">None yet</p></div>
+          <div class="track-list-group"><h3>Blocked tracks</h3><ul id="blockTracks" class="rule-list"></ul><p id="block-empty" class="empty-text">None yet</p></div>
+        </section>
+        <section class="settings-section data-section" aria-labelledby="settings-data-heading">
+          <h2 id="settings-data-heading">Settings file</h2>
+          <div class="data-actions"><button type="button" id="export" class="button">Export</button><button type="button" id="import" class="button">Import</button><input id="import-file" type="file" accept=".json,application/json" hidden><button type="button" id="reset" class="text-button danger">Reset settings</button></div>
+        </section>
+      </fieldset>
+    </form>
+    <dialog id="reset-dialog" aria-labelledby="reset-heading"><form method="dialog"><h2 id="reset-heading">Reset settings?</h2><p>Your track rules and custom words will be removed.</p><div class="dialog-actions"><button class="button" value="cancel">Cancel</button><button class="button primary" id="confirm-reset" value="reset">Reset</button></div></form></dialog>
+  </main>
+  <script src="../shared/catalog.js"></script>
+  <script src="../shared/classifier.js"></script>
+  <script src="common.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,1633 @@
+{
+  "version": 1,
+  "languages": [
+    {
+      "id": "hindi",
+      "label": "Hindi",
+      "aliases": [
+        "hi",
+        "hin",
+        "हिन्दी",
+        "हिंदी"
+      ]
+    },
+    {
+      "id": "punjabi",
+      "label": "Punjabi",
+      "aliases": [
+        "pa",
+        "pan",
+        "panjabi",
+        "ਪੰਜਾਬੀ",
+        "پنجابی"
+      ]
+    },
+    {
+      "id": "urdu",
+      "label": "Urdu",
+      "aliases": [
+        "ur",
+        "urd",
+        "اردو"
+      ]
+    },
+    {
+      "id": "bhojpuri",
+      "label": "Bhojpuri",
+      "aliases": [
+        "bho",
+        "भोजपुरी"
+      ]
+    },
+    {
+      "id": "haryanvi",
+      "label": "Haryanvi",
+      "aliases": [
+        "bgc",
+        "haryanavi",
+        "हरियाणवी"
+      ]
+    },
+    {
+      "id": "rajasthani",
+      "label": "Rajasthani",
+      "aliases": [
+        "raj",
+        "marwari",
+        "mwr",
+        "राजस्थानी"
+      ]
+    },
+    {
+      "id": "awadhi",
+      "label": "Awadhi",
+      "aliases": [
+        "awa",
+        "अवधी"
+      ]
+    },
+    {
+      "id": "braj",
+      "label": "Braj",
+      "aliases": [
+        "bra",
+        "ब्रज"
+      ]
+    },
+    {
+      "id": "maithili",
+      "label": "Maithili",
+      "aliases": [
+        "mai",
+        "मैथिली"
+      ]
+    },
+    {
+      "id": "magahi",
+      "label": "Magahi",
+      "aliases": [
+        "mag",
+        "मगही"
+      ]
+    },
+    {
+      "id": "garhwali",
+      "label": "Garhwali",
+      "aliases": [
+        "gbm",
+        "गढ़वाली"
+      ]
+    },
+    {
+      "id": "kumaoni",
+      "label": "Kumaoni",
+      "aliases": [
+        "kfy",
+        "कुमाऊँनी"
+      ]
+    },
+    {
+      "id": "dogri",
+      "label": "Dogri",
+      "aliases": [
+        "doi",
+        "डोगरी"
+      ]
+    },
+    {
+      "id": "kashmiri",
+      "label": "Kashmiri",
+      "aliases": [
+        "ks",
+        "kas",
+        "कॉशुर",
+        "کٲشُر"
+      ]
+    },
+    {
+      "id": "english",
+      "label": "English",
+      "aliases": [
+        "en",
+        "eng"
+      ]
+    },
+    {
+      "id": "tamil",
+      "label": "Tamil",
+      "aliases": [
+        "ta",
+        "tam",
+        "தமிழ்"
+      ]
+    },
+    {
+      "id": "telugu",
+      "label": "Telugu",
+      "aliases": [
+        "te",
+        "tel",
+        "తెలుగు"
+      ]
+    },
+    {
+      "id": "kannada",
+      "label": "Kannada",
+      "aliases": [
+        "kn",
+        "kan",
+        "ಕನ್ನಡ"
+      ]
+    },
+    {
+      "id": "malayalam",
+      "label": "Malayalam",
+      "aliases": [
+        "ml",
+        "mal",
+        "മലയാളം"
+      ]
+    },
+    {
+      "id": "marathi",
+      "label": "Marathi",
+      "aliases": [
+        "mr",
+        "mar",
+        "मराठी"
+      ]
+    },
+    {
+      "id": "bengali",
+      "label": "Bengali",
+      "aliases": [
+        "bn",
+        "ben",
+        "bangla",
+        "বাংলা"
+      ]
+    },
+    {
+      "id": "gujarati",
+      "label": "Gujarati",
+      "aliases": [
+        "gu",
+        "guj",
+        "ગુજરાતી"
+      ]
+    },
+    {
+      "id": "odia",
+      "label": "Odia",
+      "aliases": [
+        "or",
+        "ori",
+        "oriya",
+        "ଓଡ଼ିଆ"
+      ]
+    },
+    {
+      "id": "assamese",
+      "label": "Assamese",
+      "aliases": [
+        "as",
+        "asm",
+        "অসমীয়া"
+      ]
+    },
+    {
+      "id": "nepali",
+      "label": "Nepali",
+      "aliases": [
+        "ne",
+        "nep",
+        "नेपाली"
+      ]
+    },
+    {
+      "id": "sanskrit",
+      "label": "Sanskrit",
+      "aliases": [
+        "sa",
+        "san",
+        "संस्कृत"
+      ]
+    },
+    {
+      "id": "spanish",
+      "label": "Spanish",
+      "aliases": [
+        "es",
+        "spa"
+      ]
+    },
+    {
+      "id": "french",
+      "label": "French",
+      "aliases": [
+        "fr",
+        "fra",
+        "fre"
+      ]
+    },
+    {
+      "id": "german",
+      "label": "German",
+      "aliases": [
+        "de",
+        "deu",
+        "ger"
+      ]
+    },
+    {
+      "id": "portuguese",
+      "label": "Portuguese",
+      "aliases": [
+        "pt",
+        "por"
+      ]
+    },
+    {
+      "id": "korean",
+      "label": "Korean",
+      "aliases": [
+        "ko",
+        "kor"
+      ]
+    },
+    {
+      "id": "japanese",
+      "label": "Japanese",
+      "aliases": [
+        "ja",
+        "jpn"
+      ]
+    },
+    {
+      "id": "arabic",
+      "label": "Arabic",
+      "aliases": [
+        "ar",
+        "ara"
+      ]
+    },
+    {
+      "id": "instrumental",
+      "label": "Instrumental",
+      "aliases": [
+        "zxx",
+        "no linguistic content"
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "title": "Kesariya",
+      "artists": [
+        "Arijit Singh",
+        "Pritam"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "केसरिया"
+      ]
+    },
+    {
+      "title": "Tum Hi Ho",
+      "artists": [
+        "Arijit Singh"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "तुम ही हो"
+      ]
+    },
+    {
+      "title": "Chaleya",
+      "artists": [
+        "Arijit Singh",
+        "Shilpa Rao"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "चलेया"
+      ]
+    },
+    {
+      "title": "Channa Mereya",
+      "artists": [
+        "Arijit Singh"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "चन्ना मेरेया"
+      ]
+    },
+    {
+      "title": "Ae Dil Hai Mushkil",
+      "artists": [
+        "Arijit Singh"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "ऐ दिल है मुश्किल"
+      ]
+    },
+    {
+      "title": "Raabta",
+      "artists": [
+        "Arijit Singh",
+        "Pritam"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "राब्ता"
+      ]
+    },
+    {
+      "title": "Apna Bana Le",
+      "artists": [
+        "Arijit Singh"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "अपना बना ले"
+      ]
+    },
+    {
+      "title": "Tera Yaar Hoon Main",
+      "artists": [
+        "Arijit Singh"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "तेरा यार हूँ मैं"
+      ]
+    },
+    {
+      "title": "Agar Tum Saath Ho",
+      "artists": [
+        "Alka Yagnik",
+        "Arijit Singh"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "अगर तुम साथ हो"
+      ]
+    },
+    {
+      "title": "Besharam Rang",
+      "artists": [
+        "Shilpa Rao",
+        "Vishal Shekhar"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "बेशरम रंग"
+      ]
+    },
+    {
+      "title": "Jhoome Jo Pathaan",
+      "artists": [
+        "Arijit Singh",
+        "Sukriti Kakar"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "झूमे जो पठान"
+      ]
+    },
+    {
+      "title": "Shayad",
+      "artists": [
+        "Arijit Singh",
+        "Pritam"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "शायद"
+      ]
+    },
+    {
+      "title": "Ghungroo",
+      "artists": [
+        "Arijit Singh",
+        "Shilpa Rao"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "घुंघरू"
+      ]
+    },
+    {
+      "title": "Pehle Bhi Main",
+      "artists": [
+        "Vishal Mishra"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "पहले भी मैं"
+      ]
+    },
+    {
+      "title": "Satranga",
+      "artists": [
+        "Arijit Singh"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "सतरंगा"
+      ]
+    },
+    {
+      "title": "O Maahi",
+      "artists": [
+        "Arijit Singh",
+        "Pritam"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "ओ माही"
+      ]
+    },
+    {
+      "title": "Kal Ho Naa Ho",
+      "artists": [
+        "Sonu Nigam"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "कल हो ना हो"
+      ]
+    },
+    {
+      "title": "Suraj Hua Maddham",
+      "artists": [
+        "Sonu Nigam",
+        "Alka Yagnik"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "सूरज हुआ मद्धम"
+      ]
+    },
+    {
+      "title": "Tujh Mein Rab Dikhta Hai",
+      "artists": [
+        "Roop Kumar Rathod"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "तुझ में रब दिखता है"
+      ]
+    },
+    {
+      "title": "Tere Liye",
+      "artists": [
+        "Lata Mangeshkar",
+        "Roop Kumar Rathod"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "तेरे लिए"
+      ]
+    },
+    {
+      "title": "Lag Ja Gale",
+      "artists": [
+        "Lata Mangeshkar"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "लग जा गले"
+      ]
+    },
+    {
+      "title": "Pal Pal Dil Ke Paas",
+      "artists": [
+        "Kishore Kumar"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "पल पल दिल के पास"
+      ]
+    },
+    {
+      "title": "Chaiyya Chaiyya",
+      "artists": [
+        "Sukhwinder Singh",
+        "Sapna Awasthi"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "छैय्या छैय्या"
+      ]
+    },
+    {
+      "title": "Jai Ho",
+      "artists": [
+        "A R Rahman",
+        "Sukhwinder Singh"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "जय हो"
+      ]
+    },
+    {
+      "title": "Dilbar",
+      "artists": [
+        "Neha Kakkar",
+        "Dhvani Bhanushali",
+        "Ikka"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "दिलबर"
+      ]
+    },
+    {
+      "title": "Kala Chashma",
+      "artists": [
+        "Amar Arshi",
+        "Badshah",
+        "Neha Kakkar"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "काला चश्मा"
+      ],
+      "languages": [
+        "hindi",
+        "punjabi"
+      ]
+    },
+    {
+      "title": "Kar Gayi Chull",
+      "artists": [
+        "Badshah",
+        "Fazilpuria",
+        "Sukriti Kakar",
+        "Neha Kakkar"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "कर गई चुल"
+      ]
+    },
+    {
+      "title": "Gallan Goodiyaan",
+      "artists": [
+        "Shankar Mahadevan",
+        "Sukhwinder Singh",
+        "Yashita Sharma"
+      ],
+      "language": "hindi",
+      "aliases": [
+        "गल्लां गूड़ियां"
+      ]
+    },
+    {
+      "title": "Brown Munde",
+      "artists": [
+        "AP Dhillon",
+        "Gurinder Gill",
+        "Shinda Kahlon"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "ਬ੍ਰਾਊਨ ਮੁੰਡੇ"
+      ]
+    },
+    {
+      "title": "Excuses",
+      "artists": [
+        "AP Dhillon",
+        "Gurinder Gill"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Insane",
+      "artists": [
+        "AP Dhillon",
+        "Gurinder Gill",
+        "Shinda Kahlon"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "With You",
+      "artists": [
+        "AP Dhillon"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Summer High",
+      "artists": [
+        "AP Dhillon"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Majhail",
+      "artists": [
+        "AP Dhillon",
+        "Gurinder Gill",
+        "Manni Sandhu"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Born To Shine",
+      "artists": [
+        "Diljit Dosanjh"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "G O A T",
+      "artists": [
+        "Diljit Dosanjh"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "GOAT",
+        "G.O.A.T."
+      ]
+    },
+    {
+      "title": "Lover",
+      "artists": [
+        "Diljit Dosanjh"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Do You Know",
+      "artists": [
+        "Diljit Dosanjh"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Lemonade",
+      "artists": [
+        "Diljit Dosanjh"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "5 Taara",
+      "artists": [
+        "Diljit Dosanjh"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "5 Tara"
+      ]
+    },
+    {
+      "title": "Softly",
+      "artists": [
+        "Karan Aujla"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Admirin You",
+      "artists": [
+        "Karan Aujla",
+        "Ikky"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Winning Speech",
+      "artists": [
+        "Karan Aujla"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "52 Bars",
+      "artists": [
+        "Karan Aujla"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Players",
+      "artists": [
+        "Badshah",
+        "Karan Aujla",
+        "Devika Badyal"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "295",
+      "artists": [
+        "Sidhu Moose Wala",
+        "Sidhu Moosewala"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "So High",
+      "artists": [
+        "Sidhu Moose Wala",
+        "Sidhu Moosewala"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "The Last Ride",
+      "artists": [
+        "Sidhu Moose Wala",
+        "Sidhu Moosewala"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Same Beef",
+      "artists": [
+        "Sidhu Moose Wala",
+        "Sidhu Moosewala",
+        "Bohemia"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Old Skool",
+      "artists": [
+        "Prem Dhillon",
+        "Sidhu Moose Wala",
+        "Sidhu Moosewala"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Pasoori",
+      "artists": [
+        "Ali Sethi",
+        "Shae Gill"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "ਪਸੂੜੀ",
+        "پسوڑی"
+      ],
+      "languages": [
+        "punjabi",
+        "urdu"
+      ]
+    },
+    {
+      "title": "Laung Laachi",
+      "artists": [
+        "Mannat Noor"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "ਲੌਂਗ ਲਾਚੀ"
+      ]
+    },
+    {
+      "title": "Titliaan",
+      "artists": [
+        "Afsana Khan"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "Titliyan"
+      ]
+    },
+    {
+      "title": "Bijlee Bijlee",
+      "artists": [
+        "Harrdy Sandhu"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Kya Baat Ay",
+      "artists": [
+        "Harrdy Sandhu"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Backbone",
+      "artists": [
+        "Harrdy Sandhu"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Prada",
+      "artists": [
+        "Jass Manak"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Lehanga",
+      "artists": [
+        "Jass Manak"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Daru Badnaam",
+      "artists": [
+        "Param Singh",
+        "Kamal Kahlon"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Lamberghini",
+      "artists": [
+        "The Doorbeen",
+        "Ragini"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "Lamborghini"
+      ]
+    },
+    {
+      "title": "High Rated Gabru",
+      "artists": [
+        "Guru Randhawa"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Lahore",
+      "artists": [
+        "Guru Randhawa"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Patola",
+      "artists": [
+        "Guru Randhawa",
+        "Bohemia"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "We Rollin",
+      "artists": [
+        "Shubh"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "We Rollin'"
+      ]
+    },
+    {
+      "title": "Still Rollin",
+      "artists": [
+        "Shubh"
+      ],
+      "language": "punjabi",
+      "aliases": [
+        "Still Rollin'"
+      ]
+    },
+    {
+      "title": "Cheques",
+      "artists": [
+        "Shubh"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "No Love",
+      "artists": [
+        "Shubh"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "One Love",
+      "artists": [
+        "Shubh"
+      ],
+      "language": "punjabi",
+      "aliases": []
+    },
+    {
+      "title": "Lollipop Lagelu",
+      "artists": [
+        "Pawan Singh"
+      ],
+      "language": "bhojpuri",
+      "aliases": [
+        "Lollypop Lagelu",
+        "Lollypop Lageli",
+        "लॉलीपॉप लागेलू"
+      ]
+    },
+    {
+      "title": "Raat Diya Butake",
+      "artists": [
+        "Pawan Singh",
+        "Indu Sonali"
+      ],
+      "language": "bhojpuri",
+      "aliases": [
+        "Raate Diya Butake"
+      ]
+    },
+    {
+      "title": "Chhalakata Hamro Jawaniya",
+      "artists": [
+        "Pawan Singh",
+        "Priyanka Singh"
+      ],
+      "language": "bhojpuri",
+      "aliases": [
+        "Chhalakata Hamro Jawaniya Ae Raja"
+      ]
+    },
+    {
+      "title": "Hello Koun",
+      "artists": [
+        "Ritesh Pandey",
+        "Sneh Upadhya",
+        "Sneh Upadhyay",
+        "Sneh Updhayaya"
+      ],
+      "language": "bhojpuri",
+      "aliases": [
+        "Hello Kaun"
+      ]
+    },
+    {
+      "title": "52 Gaj Ka Daman",
+      "artists": [
+        "Renuka Panwar"
+      ],
+      "language": "haryanvi",
+      "aliases": [
+        "52 Gaz Ka Daman"
+      ]
+    },
+    {
+      "title": "Chatak Matak",
+      "artists": [
+        "Renuka Panwar"
+      ],
+      "language": "haryanvi",
+      "aliases": []
+    },
+    {
+      "title": "Teri Aakhya Ka Yo Kajal",
+      "artists": [
+        "DC Madana",
+        "D.C. Madana",
+        "D C Madana"
+      ],
+      "language": "haryanvi",
+      "aliases": [
+        "Teri Aakhya Ka Kajal"
+      ]
+    },
+    {
+      "title": "Solid Body",
+      "artists": [
+        "Ajay Hooda",
+        "Raju Punjabi",
+        "Sheenam Katholic"
+      ],
+      "language": "haryanvi",
+      "aliases": []
+    },
+    {
+      "title": "Bahu Kale Ki",
+      "artists": [
+        "Gajender Phogat",
+        "Anu Kadyan"
+      ],
+      "language": "haryanvi",
+      "aliases": []
+    },
+    {
+      "title": "Desi Desi Na Bolya Kar",
+      "artists": [
+        "Raju Punjabi"
+      ],
+      "language": "haryanvi",
+      "aliases": []
+    },
+    {
+      "title": "Aaj Jaane Ki Zid Na Karo",
+      "artists": [
+        "Farida Khanum"
+      ],
+      "language": "urdu",
+      "aliases": [
+        "Aaj Jane Ki Zid Na Karo"
+      ]
+    },
+    {
+      "title": "Afreen Afreen",
+      "artists": [
+        "Nusrat Fateh Ali Khan",
+        "Rahat Fateh Ali Khan",
+        "Momina Mustehsan"
+      ],
+      "language": "urdu",
+      "aliases": []
+    },
+    {
+      "title": "Ranjish Hi Sahi",
+      "artists": [
+        "Mehdi Hassan",
+        "Ali Sethi"
+      ],
+      "language": "urdu",
+      "aliases": []
+    },
+    {
+      "title": "Gulon Mein Rang Bhare",
+      "artists": [
+        "Mehdi Hassan",
+        "Ali Sethi"
+      ],
+      "language": "urdu",
+      "aliases": []
+    },
+    {
+      "title": "Aadat",
+      "artists": [
+        "Atif Aslam",
+        "Jal"
+      ],
+      "language": "urdu",
+      "aliases": []
+    },
+    {
+      "title": "Kahani Suno 2 0",
+      "artists": [
+        "Kaifi Khalil"
+      ],
+      "language": "urdu",
+      "aliases": [
+        "Kahani Suno 2.0"
+      ]
+    }
+  ],
+  "artists": [
+    {
+      "name": "Arijit Singh",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Jubin Nautiyal",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Vishal Mishra",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Sonu Nigam",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Shreya Ghoshal",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Sunidhi Chauhan",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Neha Kakkar",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Kishore Kumar",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Lata Mangeshkar",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Mohammed Rafi",
+      "aliases": [
+        "Mohammad Rafi",
+        "Mohd Rafi"
+      ],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Udit Narayan",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Alka Yagnik",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Kumar Sanu",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Shaan",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Shilpa Rao",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Dhvani Bhanushali",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Pritam",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Badshah",
+      "aliases": [],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "Yo Yo Honey Singh",
+      "aliases": [
+        "Honey Singh"
+      ],
+      "languages": [
+        "hindi"
+      ]
+    },
+    {
+      "name": "AP Dhillon",
+      "aliases": [
+        "A P Dhillon",
+        "APDHILLON"
+      ],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Gurinder Gill",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Shinda Kahlon",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Diljit Dosanjh",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Karan Aujla",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Sidhu Moose Wala",
+      "aliases": [
+        "Sidhu Moosewala"
+      ],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Shubh",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Harrdy Sandhu",
+      "aliases": [
+        "Hardy Sandhu"
+      ],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Jass Manak",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Guru Randhawa",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Gippy Grewal",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Ammy Virk",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "B Praak",
+      "aliases": [
+        "BPrak"
+      ],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Afsana Khan",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Mannat Noor",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Satinder Sartaaj",
+      "aliases": [
+        "Satinder Sartaj"
+      ],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Babbu Maan",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Mankirt Aulakh",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Nimrat Khaira",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Ninja",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Jasmine Sandlas",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Surjit Bindrakhia",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Amar Singh Chamkila",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Kuldeep Manak",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Surinder Kaur",
+      "aliases": [],
+      "languages": [
+        "punjabi"
+      ]
+    },
+    {
+      "name": "Pawan Singh",
+      "aliases": [],
+      "languages": [
+        "bhojpuri"
+      ]
+    },
+    {
+      "name": "Khesari Lal Yadav",
+      "aliases": [],
+      "languages": [
+        "bhojpuri"
+      ]
+    },
+    {
+      "name": "Ritesh Pandey",
+      "aliases": [],
+      "languages": [
+        "bhojpuri"
+      ]
+    },
+    {
+      "name": "Shilpi Raj",
+      "aliases": [],
+      "languages": [
+        "bhojpuri"
+      ]
+    },
+    {
+      "name": "Dinesh Lal Yadav",
+      "aliases": [
+        "Nirahua"
+      ],
+      "languages": [
+        "bhojpuri"
+      ]
+    },
+    {
+      "name": "Renuka Panwar",
+      "aliases": [],
+      "languages": [
+        "haryanvi"
+      ]
+    },
+    {
+      "name": "Raju Punjabi",
+      "aliases": [],
+      "languages": [
+        "haryanvi"
+      ]
+    },
+    {
+      "name": "Masoom Sharma",
+      "aliases": [],
+      "languages": [
+        "haryanvi"
+      ]
+    },
+    {
+      "name": "Diler Kharkiya",
+      "aliases": [],
+      "languages": [
+        "haryanvi"
+      ]
+    },
+    {
+      "name": "Surender Romio",
+      "aliases": [],
+      "languages": [
+        "haryanvi"
+      ]
+    },
+    {
+      "name": "Mame Khan",
+      "aliases": [],
+      "languages": [
+        "rajasthani"
+      ]
+    },
+    {
+      "name": "Gazi Khan",
+      "aliases": [],
+      "languages": [
+        "rajasthani"
+      ]
+    },
+    {
+      "name": "Narendra Singh Negi",
+      "aliases": [],
+      "languages": [
+        "garhwali"
+      ]
+    },
+    {
+      "name": "Pritam Bhartwan",
+      "aliases": [],
+      "languages": [
+        "garhwali"
+      ]
+    },
+    {
+      "name": "Gopal Babu Goswami",
+      "aliases": [],
+      "languages": [
+        "kumaoni"
+      ]
+    },
+    {
+      "name": "Mohan Upreti",
+      "aliases": [],
+      "languages": [
+        "kumaoni"
+      ]
+    },
+    {
+      "name": "Mehdi Hassan",
+      "aliases": [],
+      "languages": [
+        "urdu"
+      ]
+    },
+    {
+      "name": "Farida Khanum",
+      "aliases": [],
+      "languages": [
+        "urdu"
+      ]
+    },
+    {
+      "name": "Ghulam Ali",
+      "aliases": [],
+      "languages": [
+        "urdu"
+      ]
+    },
+    {
+      "name": "Nusrat Fateh Ali Khan",
+      "aliases": [],
+      "languages": [
+        "urdu"
+      ]
+    },
+    {
+      "name": "Rahat Fateh Ali Khan",
+      "aliases": [],
+      "languages": [
+        "urdu"
+      ]
+    },
+    {
+      "name": "Kaifi Khalil",
+      "aliases": [],
+      "languages": [
+        "urdu"
+      ]
+    },
+    {
+      "name": "Prakash Sharma",
+      "aliases": [],
+      "languages": [
+        "dogri"
+      ]
+    },
+    {
+      "name": "Rashid Hafiz",
+      "aliases": [],
+      "languages": [
+        "kashmiri"
+      ]
+    }
+  ]
+}

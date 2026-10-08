@@ -1,0 +1,28 @@
+Adblocker Pro
+
+Music playback filtering for Edge, Chrome, Brave and other Chromium browsers.
+This extension does not block advertisements.
+
+Install
+
+1. Extract this ZIP into a folder you will keep.
+2. In Edge, open edge://extensions
+   In Chrome, open chrome://extensions
+   In Brave, open brave://extensions
+3. Turn on Developer mode.
+4. Click Load unpacked.
+5. Select this folder, the one containing manifest.json.
+6. Reload your music tabs.
+
+Keep the extracted folder. Do not select the ZIP itself.
+No administrator access, installer or account is needed.
+
+Hold unidentified music is enabled by default. Unknown songs in any language
+will also be held. Allow individual tracks from the toolbar, or turn that
+setting off to hold only recognized matches.
+
+Source and updates
+https://github.com/Retro2512/adblocker-pro
+
+This download does not automatically update. For a newer release, replace the
+files in this folder, then click Reload on the browser's extensions page.

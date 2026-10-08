@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "Adblocker Pro",
+  "version": "1.0.1",
+  "description": "Hold selected music languages before playback. Local rules for music players and video sites.",
+  "minimum_chrome_version": "119",
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "action": {
+    "default_popup": "ui/popup.html",
+    "default_title": "Adblocker Pro"
+  },
+  "options_page": "ui/options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content/gate.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_origin_as_fallback": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "shared/catalog.js",
+        "shared/classifier.js",
+        "shared/settings.js",
+        "content/adapters.js",
+        "content/controller.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_origin_as_fallback": true,
+      "world": "ISOLATED"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'"
+  }
+}
