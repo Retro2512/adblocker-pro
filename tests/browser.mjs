@@ -18,14 +18,17 @@ data.writeUInt32LE(16, 16); data.writeUInt16LE(1, 20); data.writeUInt16LE(1, 22)
 data.writeUInt32LE(16000, 24); data.writeUInt32LE(32000, 28); data.writeUInt16LE(2, 32);
 data.writeUInt16LE(16, 34); data.write('data', 36); data.writeUInt32LE(data.length - 44, 40);
 const wav = 'data:audio/wav;base64,' + data.toString('base64');
-function fixture({title = 'Tum Hi Ho', artist = 'Arijit Singh', category = 'Music', youtube = false} = {}) {
+function fixture({title = 'Tum Hi Ho', artist = 'Arijit Singh', category = 'Music', youtube = false, youtubeMusic = false} = {}) {
+  const playerMetadata = youtubeMusic
+    ? `<ytmusic-player-bar><span class="title">${title}</span><span class="byline"><a>${artist}</a></span></ytmusic-player-bar>`
+    : `<div data-testid="now-playing-widget"><a data-testid="nowplaying-track-link">${title}</a><a data-testid="context-item-info-artist">${artist}</a></div>`;
   return `<!doctype html><html><head><meta charset="utf-8"><title>Player fixture</title></head><body>
-  <div data-testid="now-playing-widget"><a data-testid="nowplaying-track-link">${title}</a><a data-testid="context-item-info-artist">${artist}</a></div>
+  ${playerMetadata}
   <script>
     window.ytInitialPlayerResponse = ${JSON.stringify(youtube ? {videoDetails: {title, author: artist, videoId: 'fixture'}, microformat: {playerMicroformatRenderer: {category}}} : null)};
     window.changeTrack = (title, artist) => {
-      document.querySelector('[data-testid="nowplaying-track-link"]').textContent = title;
-      document.querySelector('[data-testid="context-item-info-artist"]').textContent = artist;
+      document.querySelector(${JSON.stringify(youtubeMusic ? 'ytmusic-player-bar .title' : '[data-testid="nowplaying-track-link"]')}).textContent = title;
+      document.querySelector(${JSON.stringify(youtubeMusic ? 'ytmusic-player-bar .byline a' : '[data-testid="context-item-info-artist"]')}).textContent = artist;
       navigator.mediaSession.metadata = new MediaMetadata({title, artist});
     };
     changeTrack(${JSON.stringify(title)}, ${JSON.stringify(artist)});
@@ -123,6 +126,21 @@ try {
     await page.close(); page = await context.newPage();
     await page.goto('https://www.youtube.com/watch?v=fixture');
     await page.waitForFunction(() => !player.paused && player.currentTime > .1);
+  });
+  await test('YouTube Music song with Entertainment category stays held and settings control playback', async () => {
+    await patch({enabled: true, strict: true, allowedHosts: []});
+    await context.route('https://music.youtube.com/**', route => route.fulfill({contentType: 'text/html', body: fixture({title: 'Jugnu', artist: 'Badshah', category: 'Entertainment', youtube: true, youtubeMusic: true})}));
+    await page.goto('https://music.youtube.com/watch?v=fixture');
+    await page.waitForTimeout(2300);
+    const state = await page.evaluate(() => ({paused: player.paused, muted: player.muted, time: player.currentTime, result: playResult}));
+    assert.equal(state.paused, true); assert.equal(state.muted, true); assert.equal(state.time, 0); assert.equal(state.result, 'pending');
+    await patch({enabled: false});
+    await page.waitForFunction(() => !player.paused && player.currentTime > .1 && playResult === 'resolved');
+    assert.equal(await page.evaluate(() => player.muted), false);
+    await patch({enabled: true});
+    await page.waitForFunction(() => player.paused && player.muted);
+    await page.waitForTimeout(200);
+    assert.equal(await page.evaluate(() => player.paused), true);
   });
   await test('Strict mode holds a music service before title metadata arrives', async () => {
     await context.unroute('https://open.spotify.com/**');

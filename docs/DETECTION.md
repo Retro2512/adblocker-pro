@@ -55,9 +55,11 @@ Explicit JSON LD `inLanguage` strings, arrays, and schema `Language` objects are
 
 On YouTube, explicit nonmusic category metadata wins. Without a category, topic channels, official audio or video labels, song or lyric labels, and a catalog performer paired with a known title establish music context. Interview, tutorial, reaction, review, and similar cues suppress title based inference. These rules can still miss an unusually titled song or mistake a video with unusual labels; they are not audio content recognition.
 
+On YouTube Music, broad upload categories such as Entertainment do not disable music filtering. A current track establishes music context unless its supplied category explicitly identifies a podcast, speech, spoken word or audiobook.
+
 SoundCloud and Bandcamp active track players establish music context unless supplied category metadata identifies podcasts or speech. Untagged spoken audio on these sites can therefore be held in strict mode. Spotify and other music services may also host podcasts whose Media Session metadata omits content type.
 
-Current DOM player title wins differing bridge metadata. A disagreement discards bridge artist, album, and language tags rather than attaching an old song's evidence to a new title. A YouTube bridge video ID that differs from the current URL invalidates the bridge record. Site markup can change; Media Session fallback remains useful when an active selector is unavailable. Tests validate synthetic player fixtures, not signed in playback against every current service.
+Current DOM player title wins differing bridge metadata unless a YouTube player response identifies the video ID in the current URL. That verified response takes precedence while the player bar still shows the previous item; stale DOM artist and album fields are discarded. Without that verified identity, a title disagreement discards bridge artist, album, category and language tags. A YouTube bridge video ID that differs from the current URL invalidates the bridge record. Site markup can change; Media Session fallback remains useful when an active selector is unavailable. Tests validate synthetic player fixtures, not signed in playback against every current service.
 
 ## Verification
 

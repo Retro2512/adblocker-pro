@@ -35,6 +35,38 @@ test('YouTube Music adapter wins broader YouTube host', () => {
   const track = read('<ytmusic-player-bar><span class="title">Brown Munde</span><span class="byline"><a>AP Dhillon</a></span></ytmusic-player-bar>', 'https://music.youtube.com/watch?v=a');
   assert.equal(track.site, 'youtubeMusic'); assert.equal(track.music, true); assert.equal(track.artist, 'AP Dhillon');
 });
+test('YouTube Music treats music uploads as music regardless of broad video category', () => {
+  const html = '<ytmusic-player-bar><span class="title">Jugnu</span><span class="byline"><a>Badshah</a><a>Jugnu</a></span></ytmusic-player-bar>';
+  for (const category of ['Entertainment', 'People & Blogs', 'संगीत']) {
+    const track = read(html, 'https://music.youtube.com/watch?v=current', { title: 'Jugnu', artist: 'Badshah', category, videoId: 'current' });
+    assert.equal(track.site, 'youtubeMusic');
+    assert.equal(track.music, true, category);
+    assert.equal(globalThis.QuietGateClassifier.classify(track).decision, 'block', category);
+  }
+});
+test('YouTube Music preserves explicit podcast and spoken word context', () => {
+  const html = '<ytmusic-player-bar><span class="title">Episode 1</span><span class="byline"><a>Badshah</a></span></ytmusic-player-bar>';
+  for (const category of ['Podcast', 'Spoken Word']) {
+    assert.equal(read(html, 'https://music.youtube.com/watch?v=current', { category, videoId: 'current' }).music, false, category);
+  }
+});
+test('fresh identified YouTube Music bridge wins stale player bar metadata', () => {
+  const html = '<ytmusic-player-bar><span class="title">English Song</span><span class="byline"><a>Old Performer</a></span><span class="subtitle"><a>Old Performer</a><a>Old Album</a></span></ytmusic-player-bar>';
+  const track = read(html, 'https://music.youtube.com/watch?v=current', { videoId: 'current', title: 'Tum Hi Ho', artist: 'Arijit Singh', album: 'Aashiqui 2', category: 'Music' });
+  assert.equal(track.title, 'Tum Hi Ho'); assert.equal(track.artist, 'Arijit Singh'); assert.equal(track.album, 'Aashiqui 2');
+  assert.equal(track.id, 'current'); assert.equal(globalThis.QuietGateClassifier.classify(track).decision, 'block');
+});
+test('fresh identified bridge cannot inherit stale artist or album when fields are empty', () => {
+  const html = '<ytmusic-player-bar><span class="title">English Song</span><span class="byline"><a>Old Performer</a></span><span class="subtitle"><a>Old Performer</a><a>English Songs</a></span></ytmusic-player-bar>';
+  const track = read(html, 'https://music.youtube.com/watch?v=current', { videoId: 'current', title: 'New Uncatalogued Recording', artist: '', album: '', category: 'Music' });
+  assert.equal(track.title, 'New Uncatalogued Recording'); assert.equal(track.artist, ''); assert.equal(track.album, '');
+  assert.equal(track.music, true); assert.equal(globalThis.QuietGateClassifier.classify(track).decision, 'unknown');
+});
+test('unidentified YouTube Music bridge retains current DOM preference', () => {
+  const html = '<ytmusic-player-bar><span class="title">Hello</span><span class="byline"><a>Adele</a></span><span class="subtitle"><a>Adele</a><a>25</a></span></ytmusic-player-bar>';
+  const track = read(html, 'https://music.youtube.com/watch?v=current', { title: 'Tum Hi Ho', artist: 'Arijit Singh', album: 'Aashiqui 2', category: 'Music' });
+  assert.equal(track.title, 'Hello'); assert.equal(track.artist, 'Adele'); assert.equal(track.album, '25'); assert.equal(track.id, undefined);
+});
 test('Spotify active metadata is independent of recommendation text', () => {
   const track = read('<a data-testid="nowplaying-track-link">Hello</a><a data-testid="context-item-info-artist">Adele</a><main><h1>Kesariya</h1><p>Arijit Singh</p></main>', 'https://open.spotify.com/');
   assert.equal(track.title, 'Hello'); assert.equal(track.artist, 'Adele'); assert.equal(track.music, true);

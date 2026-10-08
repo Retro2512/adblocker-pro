@@ -71,6 +71,7 @@
     let host = string(location?.hostname).toLowerCase();
     if (!host && typeof location === 'string') { try { host = new URL(location).hostname.toLowerCase(); } catch { /* Invalid locations use generic extraction. */ } }
     const site = siteFor(host), options = selectors[site.id] || {};
+    const videoSite = site.id === 'youtube' || site.id === 'youtubeMusic';
     let bridge = bridgeMetadata && typeof bridgeMetadata === 'object' ? bridgeMetadata : {};
     const domTitle = first(document, options.title);
     const norm = root.QuietGateClassifier?.normalize || (value => string(value).toLowerCase());
@@ -81,19 +82,26 @@
     } catch { /* Metadata extraction does not require a valid full URL. */ }
     if (bridge.videoId && currentVideoId && bridge.videoId !== currentVideoId) bridge = {};
     const mismatchedTitle = domTitle && bridge.title && norm(domTitle) !== norm(bridge.title);
-    const activeTitle = domTitle || string(bridge.title);
+    // Player response IDs establish freshness during SPA transitions. The bar
+    // can still show the previously allowed item when the next item starts.
+    const currentBridge = Boolean(videoSite && currentVideoId && bridge.videoId === currentVideoId && string(bridge.title));
+    const bridgeDetails = currentBridge || !mismatchedTitle;
+    const domDetails = !currentBridge || !mismatchedTitle;
+    const activeTitle = (currentBridge ? string(bridge.title) : domTitle) || string(bridge.title);
     const ld = structured(document, activeTitle);
-    const metadata = { title: activeTitle || ld.title || '', artist: first(document, options.artist) || (!mismatchedTitle ? string(bridge.artist) : '') || ld.artist || '',
-      album: first(document, options.album) || (!mismatchedTitle ? string(bridge.album) : '') || ld.album || '',
-      language: (!mismatchedTitle ? string(bridge.language) : '') || ld.language || '',
-      languages: !mismatchedTitle && Array.isArray(bridge.languages) ? bridge.languages.slice(0, 30).map(string).filter(Boolean) : ld.languages || [],
+    const metadata = { title: activeTitle || ld.title || '', artist: (currentBridge ? string(bridge.artist) : '') || (domDetails ? first(document, options.artist) : '') || (bridgeDetails ? string(bridge.artist) : '') || ld.artist || '',
+      album: (currentBridge ? string(bridge.album) : '') || (domDetails ? first(document, options.album) : '') || (bridgeDetails ? string(bridge.album) : '') || ld.album || '',
+      language: (bridgeDetails ? string(bridge.language) : '') || ld.language || '',
+      languages: bridgeDetails && Array.isArray(bridge.languages) ? bridge.languages.slice(0, 30).map(string).filter(Boolean) : ld.languages || [],
       music: false, site: site.id };
     const currentItem = Boolean(metadata.title);
-    const category = string(String(bridge.category ?? ''));
+    const category = bridgeDetails ? string(String(bridge.category ?? '')) : '';
     const musicCategory = category.toLowerCase() === 'music' || category === '10';
     const spokenCategory = /^(?:podcast|podcasts|speech|spoken word|audiobook|audiobooks)$/iu.test(category);
-    const videoSite = site.id === 'youtube' || site.id === 'youtubeMusic';
-    if (videoSite && category && !musicCategory) metadata.music = false;
+    // YouTube upload categories describe videos, not song content. On the
+    // dedicated music service, Entertainment and localized categories must
+    // not bypass filtering. Explicit spoken content remains outside scope.
+    if (videoSite && (spokenCategory || (site.id === 'youtube' && category && !musicCategory))) metadata.music = false;
     else if (site.id === 'youtube') {
       const channel = first(document, ['#owner #channel-name a', '#upload-info #channel-name a']);
       const categoryNode = first(document, ['meta[itemprop="genre"]']);
