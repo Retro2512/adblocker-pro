@@ -34,7 +34,11 @@ Spotify is selected by default. The tray menu opens settings or quits the app. C
 
 Hindi, Punjabi, Urdu, Bhojpuri, Haryanvi, Rajasthani, Awadhi, Braj, Maithili, Magahi, Garhwali, Kumaoni, Dogri and Kashmiri are selected. The list is configurable; it is not a claim that geography has one definitive language boundary.
 
-**Hold unidentified music is on by default.** Songs without usable language evidence stay held, including English or other languages. Use **Allow track**, or turn that setting off to block only recognized matches. YouTube videos without a usable category can also be held in this mode. Identified nonmusic videos continue normally.
+The toolbar popup contains only an enable switch and a cumulative **Blocked** counter. It does not display titles, artists, sites or classification reasons. The counter records identified playback holds, not advertisements. Repeated attempts on the same item in a page visit do not inflate it.
+
+Open the extension's options through your browser's extension details to change advanced settings.
+
+**Hold unidentified music is on by default.** Songs without usable language evidence stay held, including English or other languages. Turn that setting off to block only recognized matches, or import exact track exceptions. YouTube videos without a usable category can also be held in this mode. Identified nonmusic videos continue normally.
 
 **Match artists is on by default.** This broadens detection but can hold a multilingual artist's otherwise allowed songs. Explicit song language and exact track rules take precedence.
 

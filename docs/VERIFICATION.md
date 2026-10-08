@@ -6,9 +6,9 @@ Tested on Windows on October 8, 2026 with Node 24.15.0, .NET 8 and Playwright Ch
 
 | Check | Result |
 | :--- | :--- |
-| JavaScript unit tests | 76 passing |
+| JavaScript unit tests | 80 passing |
 | Actual Chromium extension playback fixtures | 16 passing |
-| Actual extension UI and persistence tests | 12 passing |
+| Actual extension UI and persistence tests | 15 passing |
 | Published Windows executable self tests | 150 assertions passing |
 | Manifest, asset and JavaScript syntax checks | Passing |
 | Production npm dependency audit | No vulnerabilities reported |
@@ -16,7 +16,7 @@ Tested on Windows on October 8, 2026 with Node 24.15.0, .NET 8 and Playwright Ch
 
 Browser playback fixtures exercise pending play promises, known Hindi and Punjabi tracks, same element track changes, unknown tracks, missing metadata, explicit allow rules, mute restoration, explicit pause cancellation, Web Audio, cross origin iframes, video buffering overlay, domain exceptions, nonmusic YouTube videos and settings reloads.
 
-UI tests exercise real worker messages, local persistence, import and export, invalid JSON shapes, size limits, exact track actions, empty states, reset confirmation and mobile layout. Screenshots were visually inspected. Gate unit tests also cover old decision revisions, detached player cleanup, Web Audio aliases and cancellation.
+UI tests exercise real worker messages, local persistence, import and export, invalid JSON shapes, size limits, exact rule removal, the minimal popup, real held playback counting, retry deduplication, toggle restoration, empty states, reset confirmation and mobile layout. Screenshots were visually inspected. Gate unit tests also cover old decision revisions, detached player cleanup, Web Audio aliases and cancellation.
 
 Windows self tests use catalog fixtures and the production mute lease with fake audio callbacks. They verify initial mute preservation, repeated holds, volume slider changes, manual unmute, restoration, and disposal without modifying user audio. The published executable's catalog matches the source catalog.
 

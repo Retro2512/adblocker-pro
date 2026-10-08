@@ -2,7 +2,7 @@
 
 Adblocker Pro processes the currently playing title, artist, album and available category or language metadata on the device. It does not record audio or use a microphone.
 
-The extension stores settings and chosen track rules in local browser storage. Current tab status is kept in browser session storage and removed when the tab closes. It is not a listening history and is not synced to an account.
+The extension stores settings, chosen track rules and an anonymous cumulative blocked count in local browser storage. Current tab status and bounded item hashes used to avoid counting retries are kept in browser session storage and removed when the tab closes. The cumulative count contains no titles or listening history and is not synced to an account.
 
 The Windows companion stores its settings in `%LOCALAPPDATA%\QuietGate\settings.json`. It reads media sessions only to identify configured music apps and changes only their playback and audio sessions.
 

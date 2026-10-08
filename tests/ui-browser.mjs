@@ -97,37 +97,70 @@ try {
   const popupEvent = context.waitForEvent('page');
   await options.evaluate(() => chrome.tabs.create({url:chrome.runtime.getURL('ui/popup.html'),active:false}));
   const popup = await popupEvent;
-  await popup.waitForFunction(() => document.getElementById('track-title').textContent === 'Tum Hi Ho');
-  await test('Popup reads the active track and saves exact allow and block rules', async () => {
-    assert.equal(await popup.locator('#track-artist').textContent(),'Arijit Singh');
-    await popup.locator('#allow-track').click(); await waitSettings(settings => settings.allowTracks.includes('tum hi ho|arijit singh'));
-    await popup.waitForFunction(() => document.getElementById('allow-track').getAttribute('aria-pressed') === 'true');
-    await popup.locator('#block-track').click(); await waitSettings(settings => settings.blockTracks.includes('tum hi ho|arijit singh') && settings.allowTracks.length === 0);
-    await popup.waitForFunction(() => document.getElementById('block-track').getAttribute('aria-pressed') === 'true');
-    await popup.waitForFunction(() => document.getElementById('state').textContent === 'Blocked');
-    await popup.setViewportSize({width:360,height:360}); await popup.waitForTimeout(200);
+  await popup.waitForFunction(() => !document.getElementById('enabled').disabled);
+  await test('Popup exposes only an enable switch and an anonymous total', async () => {
+    assert.equal(await popup.locator('#blocked-count').textContent(),'0');
+    assert.equal(await popup.locator('button,a').count(),0);
+    assert.equal(await popup.locator('input').count(),1);
+    const text = await popup.locator('body').innerText();
+    assert(!/Tum Hi Ho|Arijit|Spotify|song|music|track|ads/i.test(text));
+    assert.deepEqual(Object.keys(await send({type:'GET_SUMMARY'})).sort(),['blockedCount','enabled']);
+  });
+  const wav = Buffer.alloc(44 + 32000);
+  wav.write('RIFF'); wav.writeUInt32LE(wav.length-8,4); wav.write('WAVEfmt ',8);
+  wav.writeUInt32LE(16,16); wav.writeUInt16LE(1,20); wav.writeUInt16LE(1,22);
+  wav.writeUInt32LE(16000,24); wav.writeUInt32LE(32000,28); wav.writeUInt16LE(2,32);
+  wav.writeUInt16LE(16,34); wav.write('data',36); wav.writeUInt32LE(wav.length-44,40);
+  await test('Actual held playback increments once and repeated probes do not inflate it', async () => {
+    await music.evaluate(src => { window.player = new Audio(src); document.body.append(player); player.play().catch(() => {}); },'data:audio/wav;base64,'+wav.toString('base64'));
+    await popup.waitForFunction(() => document.getElementById('blocked-count').textContent === '1');
+    await music.evaluate(() => { for(let i=0;i<5;i++) player.play().catch(() => {}); });
+    await popup.waitForTimeout(600);
+    assert.equal((await send({type:'GET_SUMMARY'})).blockedCount,1);
+  });
+  await test('Popup switch persists and releasing then reholding does not recount', async () => {
+    await popup.locator('#enabled').uncheck(); await waitSettings(settings => !settings.enabled);
+    await popup.reload(); await popup.waitForFunction(() => !document.getElementById('enabled').disabled);
+    assert.equal(await popup.locator('#enabled').isChecked(),false);
+    assert.equal(await popup.locator('#blocked-count').textContent(),'1');
+    await popup.locator('#enabled').check(); await waitSettings(settings => settings.enabled);
+    await music.evaluate(() => { player.play().catch(() => {}); });
+    await popup.waitForTimeout(600);
+    assert.equal((await send({type:'GET_SUMMARY'})).blockedCount,1);
+  });
+  await test('The next held item updates the total without exposing its metadata', async () => {
+    await music.evaluate(() => {
+      document.querySelector('[data-testid="nowplaying-track-link"]').textContent='Lover';
+      document.querySelector('[data-testid="context-item-info-artist"]').textContent='Diljit Dosanjh';
+      navigator.mediaSession.metadata=new MediaMetadata({title:'Lover',artist:'Diljit Dosanjh'});
+      player.play().catch(() => {});
+    });
+    await popup.waitForFunction(() => document.getElementById('blocked-count').textContent === '2');
+    assert(!/Lover|Diljit|Spotify|song|music|track/i.test(await popup.locator('body').innerText()));
+    await popup.setViewportSize({width:320,height:206});
+    assert.equal(await popup.evaluate(() => document.documentElement.scrollWidth > innerWidth),false);
     await popup.screenshot({path:path.join(artifacts,'popup.png')});
   });
   await test('Options track removal clears the exact rule in storage', async () => {
+    await send({type:'TRACK_RULE',key:'tum hi ho|arijit singh',rule:'block'});
     await options.reload(); await options.waitForFunction(() => !document.getElementById('settings-fields').disabled);
     assert.equal(await options.locator('#blockTracks li').count(),1);
     await options.locator('#blockTracks button').click(); await waitSettings(settings => settings.blockTracks.length === 0);
     assert.equal(await options.locator('#block-empty').isVisible(),true);
   });
-  await test('Popup empty track disables exact rule actions', async () => {
+  await test('An empty page leaves the cumulative counter unchanged', async () => {
     await music.goto('https://open.spotify.com/empty');
-    await popup.waitForFunction(() => document.getElementById('track-title').textContent === 'No track detected');
-    assert.equal(await popup.locator('#allow-track').isDisabled(),true);
-    assert.equal(await popup.locator('#block-track').isDisabled(),true);
+    await popup.reload(); await popup.waitForFunction(() => !document.getElementById('enabled').disabled);
+    assert.equal(await popup.locator('#blocked-count').textContent(),'2');
   });
-  await test('An unsupported tab shows Ready without a pending update', async () => {
+  await test('The minimal popup also works on an unsupported tab', async () => {
     const blank = await context.newPage(); await blank.goto('about:blank'); await blank.bringToFront();
     const newPopupEvent = context.waitForEvent('page');
     await options.evaluate(() => chrome.tabs.create({url:chrome.runtime.getURL('ui/popup.html'),active:false}));
     const emptyPopup = await newPopupEvent;
-    await emptyPopup.waitForFunction(() => document.getElementById('state').textContent === 'Ready');
-    assert.equal(await emptyPopup.locator('#allow-track').isDisabled(),true);
-    assert.equal(await emptyPopup.locator('#block-track').isDisabled(),true);
+    await emptyPopup.waitForFunction(() => !document.getElementById('enabled').disabled);
+    assert.equal(await emptyPopup.locator('#blocked-count').textContent(),'2');
+    assert.equal(await emptyPopup.locator('button,a').count(),0);
     await emptyPopup.close(); await blank.close();
   });
   await test('Small settings layout has no overflow and no runtime errors', async () => {

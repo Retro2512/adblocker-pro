@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Adblocker Pro",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Hold selected music languages before playback. Local rules for music players and video sites.",
   "minimum_chrome_version": "119",
   "permissions": [

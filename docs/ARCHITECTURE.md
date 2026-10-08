@@ -10,6 +10,8 @@ Blocked HTML media keeps its play promise pending, remains paused, and is muted 
 
 An MV3 worker serializes settings writes, validates patches and retains current tab status in session storage. Only this extension's UI pages may modify settings. Content scripts may report current status and read settings. The extension requests storage permission; its content script match patterns account for website access.
 
+The popup requests only enable state and the cumulative blocked count. It receives no current title, artist, site or classification reason. The count increments when playback was requested and a titled item was held. A rolling set of 256 item hashes per frame document suppresses repeat counts across retries, toggle changes and worker restarts. Only the aggregate count persists across browser sessions. This is a playback hold metric, not an ad metric.
+
 ## Detection boundary
 
 Classification is metadata based. Language evidence has explicit priority, manual rules are deterministic, and optional artist evidence is marked as heuristic. The browser's UI language is never a song language. Devanagari alone cannot distinguish Hindi from Marathi or Nepali. Arabic script alone cannot establish Urdu.

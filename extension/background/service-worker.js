@@ -1,5 +1,5 @@
 'use strict';
-importScripts('../shared/catalog.js', '../shared/classifier.js', '../shared/settings.js');
+importScripts('../shared/catalog.js', '../shared/classifier.js', '../shared/settings.js', '../shared/counter.js');
 const Settings = globalThis.QuietGateSettings;
 let writeQueue = Promise.resolve();
 let statusQueue = Promise.resolve();
@@ -20,7 +20,11 @@ chrome.runtime.onInstalled.addListener(async () => {
   const settings = await readSettings();
   await chrome.storage.local.set({settings});
 });
-chrome.tabs.onRemoved.addListener(tabId => chrome.storage.session.remove('tab:' + tabId));
+chrome.tabs.onRemoved.addListener(async tabId => {
+  const entries = await chrome.storage.session.get(null);
+  const keys = Object.keys(entries).filter(key => key === 'tab:' + tabId || key.startsWith('count:' + tabId + ':'));
+  await chrome.storage.session.remove(keys);
+});
 chrome.runtime.onMessage.addListener((message, sender, respond) => {
   const handle = async () => {
     if (!message || typeof message.type !== 'string') throw new Error('Invalid request');
@@ -33,6 +37,7 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
         status[key] = typeof data[key] === 'string' ? data[key].slice(0, 1000) : '';
       }
       status.music = data.music === true;
+      status.playbackRequested = data.playbackRequested === true;
       status.frameId = sender.frameId;
       status.updatedAt = Date.now();
       const operation = statusQueue.then(async () => {
@@ -42,6 +47,19 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
         if (!existing || status.music || existing.frameId === sender.frameId || (!existing.music && sender.frameId === 0)) {
           await chrome.storage.session.set({[storageKey]: status});
         }
+        if (status.decision === 'block' && status.playbackRequested && status.title.trim() && status.key.includes('|')) {
+          const frameKey = 'count:' + sender.tab.id + ':' + sender.frameId;
+          const bytes = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(status.site + '|' + status.key));
+          const digest = Array.from(new Uint8Array(bytes), byte => byte.toString(16).padStart(2, '0')).join('');
+          const previous = (await chrome.storage.session.get(frameKey))[frameKey];
+          const update = QuietGateCounter.record(previous, sender.documentId || '', digest);
+          if (update.added) {
+            const {stats} = await chrome.storage.local.get('stats');
+            const blockedCount = Math.min(Number.MAX_SAFE_INTEGER, QuietGateCounter.total(stats?.blockedCount) + 1);
+            await chrome.storage.local.set({stats: {blockedCount}});
+            await chrome.storage.session.set({[frameKey]: update.state});
+          }
+        }
       });
       statusQueue = operation.catch(() => {});
       await operation;
@@ -49,6 +67,11 @@ chrome.runtime.onMessage.addListener((message, sender, respond) => {
     }
     if (message.type === 'GET_SETTINGS') return {settings: await readSettings()};
     if (!fromUI) throw new Error('Open Adblocker Pro to change settings');
+    if (message.type === 'GET_SUMMARY') {
+      await statusQueue;
+      const [{stats}, settings] = await Promise.all([chrome.storage.local.get('stats'), readSettings()]);
+      return {enabled: settings.enabled, blockedCount: QuietGateCounter.total(stats?.blockedCount)};
+    }
     if (message.type === 'GET_STATE') {
       const key = Number.isInteger(message.tabId) ? 'tab:' + message.tabId : '';
       const cached = key ? (await chrome.storage.session.get(key))[key] : null;

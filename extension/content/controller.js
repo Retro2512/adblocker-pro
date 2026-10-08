@@ -98,7 +98,7 @@
     post('DECISION', {hold, enabled: !bypass});
     sendStatus({
       title: track.title, artist: track.artist, site: track.site || location.hostname,
-      key, music: musicContext, decision: hold ? 'block' : 'allow',
+      key, music: musicContext, playbackRequested, decision: hold ? 'block' : 'allow',
       reason: result.reason, language: result.language || ''
     });
     drawOverlay();

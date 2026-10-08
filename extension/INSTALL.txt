@@ -17,9 +17,12 @@ Install
 Keep the extracted folder. Do not select the ZIP itself.
 No administrator access, installer or account is needed.
 
+The toolbar shows an enable switch and a cumulative Blocked counter.
+The counter records playback holds, not advertisements.
+
 Hold unidentified music is enabled by default. Unknown songs in any language
-will also be held. Allow individual tracks from the toolbar, or turn that
-setting off to hold only recognized matches.
+will also be held. Advanced settings are available through the browser's
+extension details. Turn that setting off to hold only recognized matches.
 
 Source and updates
 https://github.com/Retro2512/adblocker-pro
